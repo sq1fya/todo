@@ -1,15 +1,9 @@
 import React from 'react'
 
-const Switch = ({ isOn, handleToggle }) => {
+const Switch = ({ handleToggle }) => {
   return (
     <>
-      <input
-        checked={isOn}
-        onChange={handleToggle}
-        // className="toggleStatus"
-        // id={`switch-new`}
-        type="checkbox"
-      />
+      <input onChange={handleToggle} type="checkbox" />
       <label className="switch-label" />
     </>
   )

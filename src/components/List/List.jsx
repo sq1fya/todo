@@ -27,13 +27,9 @@ function List() {
             palceholder="type here ... "
             onChange={e => setTodo(e.target.value)}
           />
-          {/*<div className="input-group-append">*/}
             <button
               className="btn btn-outline-secondary"
-              onClick={onButtonClick}
-              type= "button"
             >Add</button>
-          {/*</div>*/}
         </form>
       <ul>
         {todoList.map(element => (

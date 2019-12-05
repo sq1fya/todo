@@ -6,10 +6,9 @@ const ListElement = ({element}) => {
 
   console.log(value);
   return (
-    <li style={{ background: value && '#06D6A0' }}
-    >{element.inputVal}
+    <li style={{ background: value && '#06D6A0' }}>
+      {element.inputVal}
       <Switch
-        isOn={value}
         handleToggle={() => setValue(!value)}
       />
     </li>
