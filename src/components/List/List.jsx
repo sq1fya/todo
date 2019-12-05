@@ -10,10 +10,10 @@ function List() {
       id: Date.now(),
       inputVal,
       status: "done"
-    }
-
+    };
     e.preventDefault();
-    setTodoList([...todoList, newElement])
+    setTodoList([...todoList, newElement]);
+    console.log(inputVal)
   };
 
   return (
