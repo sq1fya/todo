@@ -1,12 +1,11 @@
 import React from 'react';
-import List from "./components/List/List";
-
 import './App.scss';
+import List from "./components/List/List";
 
 function App() {
   return (
     <div className="container mt-4">
-      <List />
+      <List  />
     </div>
   );
 }
