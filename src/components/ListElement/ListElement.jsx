@@ -1,12 +1,13 @@
 import React, {useState}from 'react'
 import Switch from "../Switch/Switch";
 
-const ListElement = ({element}, isOn) => {
+const ListElement = ({element}) => {
   const [value, setValue] = useState(false);
 
-  console.log(value)
+  console.log(value);
   return (
-    <li style={{isOn}}>{element.inputVal}
+    <li style={{ background: value && '#06D6A0' }}
+    >{element.inputVal}
       <Switch
         isOn={value}
         handleToggle={() => setValue(!value)}

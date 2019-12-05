@@ -12,9 +12,7 @@ function List() {
       status: "done"
     }
 
-
-
-    e.preventDefault()
+    e.preventDefault();
     setTodoList([...todoList, newElement])
   };
 
@@ -29,13 +27,13 @@ function List() {
             palceholder="type here ... "
             onChange={e => setTodo(e.target.value)}
           />
-          <div className="input-group-append">
+          {/*<div className="input-group-append">*/}
             <button
               className="btn btn-outline-secondary"
               onClick={onButtonClick}
               type= "button"
             >Add</button>
-          </div>
+          {/*</div>*/}
         </form>
       <ul>
         {todoList.map(element => (

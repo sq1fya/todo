@@ -6,13 +6,11 @@ const Switch = ({ isOn, handleToggle }) => {
       <input
         checked={isOn}
         onChange={handleToggle}
-        className="toggleStatus"
-        id={`switch-new`}
+        // className="toggleStatus"
+        // id={`switch-new`}
         type="checkbox"
       />
-      <label style={{ background: isOn && '#06D6A0' }} className="switch-label">
-        <span className={`switch-button`} />
-      </label>
+      <label className="switch-label" />
     </>
   )
 }
