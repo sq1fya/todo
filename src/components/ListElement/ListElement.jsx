@@ -1,18 +1,20 @@
-import React, {useState}from 'react'
+import React, { useState } from "react";
 import Switch from "../Switch/Switch";
 
-const ListElement = ({element}) => {
+const ListElement = ({ element }) => {
   const [value, setValue] = useState(false);
+  const switchToggle = () => {
+    setValue(!value);
+  };
 
   return (
-    <li style={{ background: value && '#06D6A0' }}
-    >{element.inputVal}
-      <Switch
-        isOn={value}
-        handleToggle={() => setValue(!value)}
-      />
+    <li className={value ? "selected" : ""}>
+      {element.inputVal}
+      <Switch isOn={value} handleToggle={switchToggle} />
     </li>
-  )
-}
+  );
+};
 
-export default ListElement
+export default ListElement;
+
+// style={{ background: value && "#06D6A0" }}
