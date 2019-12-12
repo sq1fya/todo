@@ -1,42 +1,65 @@
 import React, { useState } from "react";
 import ListElement from "../ListElement/ListElement";
+import InputForm from "../InputComp/InputComp";
 
 function List() {
-  const [inputVal, setTodo] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState([
+    {
+      id: 1,
+      inputVal: "one",
+      status: true
+    },
+    {
+      id: 2,
+      inputVal: "one",
+      status: true
+    },
+    {
+      id: 3,
+      inputVal: "one",
+      status: true
+    }
+  ]);
 
-  const onButtonClick = event => {
-    let newElement = {
+  const createNewElement = text => {
+    const newElement = {
       id: Date.now(),
-      inputVal,
-      status: "done"
+      inputVal: text,
+      status: false
     };
-    event.preventDefault();
     setTodoList([...todoList, newElement]);
   };
 
-  const onInputChange = event => {
-    setTodo(event.target.value);
+  const toggleStatus = id => {
+    console.log(id);
+    const todoListNew = todoList.map(element => {
+      if (element.id === id) {
+        return { ...element, status: !element.status };
+      } else {
+        return element;
+      }
+    });
+    setTodoList(todoListNew);
   };
+
+  const deleteElement = id => {
+    const newTodoList = todoList.filter(element => id !== element.id);
+    setTodoList(newTodoList);
+  };
+
   return (
     <>
       <span className="title">todo list 1.0</span>
-      <form onSubmit={onButtonClick} className="input-group">
-        <input
-          className="form-control"
-          type="text"
-          value={inputVal}
-          placeholder="type here ... "
-          onChange={onInputChange}
-        />
-        <button className="btn btn-outline-secondary">Add</button>
-      </form>
+      <InputForm SubmitForm={createNewElement} />
       <ul>
         {todoList.map(element => (
           <ListElement
             key={element.id}
-            element={element}
+            id={element.id}
+            text={element.inputVal}
             status={element.status}
+            switchToggle={toggleStatus}
+            deleteTargetedElement={deleteElement}
           />
         ))}
       </ul>
