@@ -1,55 +1,25 @@
-import React, { useState } from "react";
-import ListElement from "../ListElement/ListElement";
-import InputForm from "../InputComp/InputComp";
+import React from 'react'
+import ListElement from '../ListElement/ListElement'
+import InputForm from '../InputComp/InputComp'
+import { connect } from 'react-redux'
 
-function List() {
-  const [todoList, setTodoList] = useState([
-    {
-      id: 1,
-      inputVal: "one",
-      status: true
-    },
-    {
-      id: 2,
-      inputVal: "one",
-      status: true
-    },
-    {
-      id: 3,
-      inputVal: "one",
-      status: true
-    }
-  ]);
+function List({ todoList, removeElement, addElement, markElement }) {
 
   const createNewElement = text => {
-    const newElement = {
-      id: Date.now(),
-      inputVal: text,
-      status: false
-    };
-    setTodoList([...todoList, newElement]);
-  };
+    addElement(text)
+  }
+
+  const handleClick = id => {
+    removeElement(id)
+  }
 
   const toggleStatus = id => {
-    console.log(id);
-    const todoListNew = todoList.map(element => {
-      if (element.id === id) {
-        return { ...element, status: !element.status };
-      } else {
-        return element;
-      }
-    });
-    setTodoList(todoListNew);
-  };
-
-  const deleteElement = id => {
-    const newTodoList = todoList.filter(element => id !== element.id);
-    setTodoList(newTodoList);
-  };
+    markElement(id)
+  }
 
   return (
     <>
-      <span className="title">todo list 1.0</span>
+      <span className="title">todo list 2.0</span>
       <InputForm SubmitForm={createNewElement} />
       <ul>
         {todoList.map(element => (
@@ -59,12 +29,26 @@ function List() {
             text={element.inputVal}
             status={element.status}
             switchToggle={toggleStatus}
-            deleteTargetedElement={deleteElement}
+            deleteTargetedElement={handleClick}
           />
         ))}
       </ul>
     </>
-  );
+  )
 }
 
-export default List;
+const mapStateToProps = ({ todoList }) => {
+  return {
+    todoList,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addElement: text => dispatch({ type: 'ADD_ELEMENT', text: text }),
+    removeElement: id => dispatch({ type: 'REMOVE_ELEMENT', id: id }),
+    markElement: id => dispatch({ type: 'MARK_ELEMENT', id: id }),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List)

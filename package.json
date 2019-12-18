@@ -1,7 +1,7 @@
 {
-  "license": "MY-1-License",
+  "license": "MIT",
   "name": "todo",
-  "email": "my@email.com",
+  "email": "lukasz.gorecki@lhsystems.com",
   "url": "http://todo.com/",
   "version": "0.1.0",
   "private": true,
