@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react'
 
-const DeleteButton = ({ targetElementById }) => {
+const DeleteButton = ({ elementID }) => {
   return (
     <button
       className="btn btn-outline-danger btn-sm"
-      onClick={targetElementById}
+      onClick={elementID}
     >
       DEL
     </button>
-  );
-};
+  )
+}
 
-export default DeleteButton;
+export default DeleteButton

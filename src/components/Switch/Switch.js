@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Switch = ({ isOn, handleToggle }) => {
   return (
@@ -11,7 +11,7 @@ const Switch = ({ isOn, handleToggle }) => {
       />
       <label className="switch-label" />
     </>
-  );
-};
+  )
+}
 
-export default Switch;
+export default Switch
